@@ -1,0 +1,130 @@
+/*li{*/
+    /*list-style: none;*/
+    /*height: 40px;*/
+/*}*/
+.box{
+    z-index: 9;
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+}
+.box1{
+    z-index: 9;
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+}
+.tianjia{
+    width: 350px;
+    height:426px;
+    background: #fff;
+    border-radius:5px;
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left:-175px;
+    margin-top:-213px;
+    overflow: hidden;
+
+}
+
+.tianjia li{
+    list-style:none;
+    height:40px;
+}
+
+.tianjia1{
+    width: 350px;
+    height:426px;
+    background: #fff;
+    border-radius:5px;
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left:-175px;
+    margin-top:-213px;
+    overflow: hidden;
+
+}
+.tianjia_div{
+    padding:0 30px 30px 30px;
+}
+.tianjia_div1{
+    padding:0 30px 30px 30px;
+}
+.tianjia_div span{
+    display: inline-block;
+    width:70px;
+}
+.tianjia_div1 span{
+    display: inline-block;
+    width:70px;
+}
+.tianjia_div input[type=text]{
+    width:216px;
+    border-radius: 5px;
+    border:1px solid #cdcdcd;
+    height:26px;
+}
+.tianjia_div1 input[type=text]{
+    width:216px;
+    border-radius: 5px;
+    border:1px solid #cdcdcd;
+    height:26px;
+}
+.tianjia_div input[type=date]{
+    width:216px;
+    border-radius: 5px;
+    border:1px solid #cdcdcd;
+    height:26px;
+}
+.tianjia_div1 input[type=date]{
+    width:216px;
+    border-radius: 5px;
+    border:1px solid #cdcdcd;
+    height:26px;
+}
+#but{
+    position: absolute;
+    bottom: 15px;
+    left:30px;
+    right:30px;
+
+}
+#buts{
+    position: absolute;
+    bottom: 15px;
+    left:30px;
+    right:30px;
+
+}
+#file{
+    display: inline-block;
+    width: 152px;
+}
+#files{
+    display: inline-block;
+    width: 152px;
+}
+.tianjia p{
+    color: #fff;
+    font-size: 18px;
+    background: #2C6DBD;
+    text-align: center;
+    height: 30px;
+    line-height:30px;
+}
+.tianjia1 p{
+    color: #fff;
+    font-size: 18px;
+    background: #2C6DBD;
+    text-align: center;
+    height: 30px;
+    line-height:30px;
+}

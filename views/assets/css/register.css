@@ -1,0 +1,83 @@
+
+body {
+    position: relative;
+}
+
+.register {
+    position: absolute;
+    right: 146px;
+    bottom: 40px;
+    width: 400px;
+    height: 382px;
+    background: #295290;
+    text-align: center;
+}
+
+.register .register_header {
+    padding: 22px;
+    height: 58px;
+    text-align: center;
+    border-bottom: 1px solid #416496;
+    color: #fff;
+    font-size: 18px;
+    cursor:pointer;
+}
+
+.register .register_footer {
+    margin: 30px 50px;
+    text-align: center;
+}
+
+.register .register_footer .form-group {
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.register .register_footer .control-label {
+    font-weight: 100;
+    margin-top: 7px;
+    text-align: right;
+}
+
+.register .register_footer .form-control {
+    padding: 6px;
+}
+
+/*.register .register_footer input{*/
+/*padding:0;*/
+/*}*/
+
+.register .inter {
+    font-size: 20px;
+    color: #fff;
+}
+
+.register .inter span {
+    display: block;
+}
+
+.register .inter .iconfont {
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+
+.register .register_header span {
+    display: inline-block;
+    width: 178px;
+    text-align: center;
+}
+
+.register .register_header .left {
+    border-right: 1px solid #416496;
+}
+
+.register .register_header .user {
+    margin-left: -5px;
+    border-left: 1px solid #416496;
+}
+
+.register .remember {
+    padding: 8px 22px;
+    color: #fff;
+}
+

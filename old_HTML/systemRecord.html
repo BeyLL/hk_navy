@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作记录</title>
+    <link rel="stylesheet" href="assets/css/reset.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/person.css">
+    <link rel="stylesheet" href="assets/css/jurManage.css">
+    <link rel="stylesheet" href="assets/js/alert/window.css">
+    <link rel="stylesheet" href="assets/fontSize/iconfont.css">
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/localStorageUtils.js"></script>
+    <script type="text/javascript" src="assets/js/alert/window.js"></script>
+	<script type="text/javascript" src="assets/js/public.js"></script>
+
+</head>
+<body>
+<!--顶部logo-->
+<div class="header">
+    <img src="assets/images/header.png" alt="">
+</div>
+<!--内容部分-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" style=" padding:0;">
+            <div class="introduce">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="foot">所属单位</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" style=" padding:0;">
+            <div class="detail">
+                <div class="detail_header">
+                    <div class="header_list">
+                        <div class="detail_left">
+                           <ul class="choice">
+                                <li><a href="shouye.html">首页</a></li>
+                                <li><a href="person.html">人员管理</a></li>
+                                <li><a href="score.html">成绩管理</a></li>
+                                <li><a href="infomation.html">信息资料</a></li>
+                                <li><a href="course.html">远程教学</a></li>
+                                <li><a href="testInfo.html">远程考核</a></li>
+                                <li class="default"><a href="systemManage.html">系统管理</a></li>
+                            </ul>
+                        </div>
+                        <div class="detail_right">
+                            <div class="login_left">
+                                <span class="iconfont icon-bangzhu"></span>
+                                <span>帮助中心</span>
+                            </div>
+                            <div class="login_right">
+                                <span class="iconfont icon-tuichu"></span>
+                                <span onclick="logout()">退出登录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail_footer">
+                    <div class="footer_content">
+                        <div class="query clear">
+                            <div class="query_left">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default">
+                                        筛选查询 <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <!--<li><a href="#">Action</a></li>-->
+                                        <!--<li><a href="#">Another action</a></li>-->
+                                        <!--<li><a href="#">Something else here</a></li>-->
+                                        <!--<li role="separator" class="divider"></li>-->
+                                        <!--<li><a href="#">Separated link</a></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="query_right">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="输入关键词进行搜索"
+                                           style="margin-top:8px;">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default " aria-haspopup="true"><span
+                                                class="glyphicon glyphicon-search" style="color:#16578d"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="design">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation"><a href="systemManage.html">单位管理</a></li>
+                                <li role="presentation"><a href="systemTest.html">考核管理</a></li>
+                                <li role="presentation"><a href="systemUser.html">用户管理</a></li>
+                                <li role="presentation"><a href="systemJur.html">权限管理</a></li>
+                                <li role="presentation" class="active"><a href="systemRecord.html">操作记录</a></li>
+                            </ul>
+                        </div>
+                        <div class="personList">
+                            <div style="overflow-x: auto;">
+                                <table class="table table-bordered ">
+                                    <thead>
+                                    <tr style='background: #1458a7;color: #fff'>
+                                        <th style="white-space: nowrap;font-size: 15px;">序号</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">操作员</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">操作模块</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">操作内容</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">操作时间</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="content" id="logList"></tbody>
+                                </table>
+                            </div>
+                            <div style="float: right;padding:0px 29px">
+                                <p style="box-sizing: border-box">
+                                    <button onclick="first()" class="btn btn-primary btn-sm" id="sy">第一页</button>
+                                    <button onclick="prevpage()" class="btn btn-primary btn-sm" id="syy">上一页</button>
+                                    <button onclick="nextpage()" class="btn btn-primary btn-sm" id="xyy">下一页</button>
+                                    <button onclick="last()" class="btn btn-primary btn-sm" id="my">最后一页</button>
+                                    共<span style="text-align: center;width:45px;display: inline-block;" id="tiaoshu"></span>条，
+                                    每页<select onchange="selectPageSize()" name="" id="pagesize">
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                </select>条,
+                                    第<span style="text-align: center;width:74px;display: inline-block;" id="pageNum"></span>页
+                                    <input style="width: 50px;" id="ty" value="" />
+                                    <button onclick="selectByPage()" id="tz" class="btn btn-primary btn-sm">确定</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var pageNow=1;
+    var pageSum;
+    var pagesize=10;
+    getLogsList();
+    //分页查询日志
+    function getLogsList() {
+        var settings = {
+            "url":"getLog",
+            "method": "POST",
+            "async":"false",
+            "data":{
+//                user:readData('USER_KEY').name,
+//                token:readData('USER_KEY').token,
+                user:"张三",
+                token:"0",
+                page:pageNow,
+                pageSize:pagesize,
+            }
+        }
+        $.ajax(settings).done(function (response) {
+            if(response.code==0){
+                var data=response.data;
+                var html='';
+                for(var i = 0;i<data.length;i++){
+                    if(pageNow==1){
+                        var k=i+1;
+                    }else{
+                        var k = parseInt((pageNow-1)*pagesize+i+1);
+                    }
+                    html+="<tr>"
+                    html+="<td style='font-size:14px;width: 5%;'>"+k+"</td><td style='font-size:14px;width: 15%'>"+data[i].name+"</td>" +
+                        "<td style='font-size:14px;width: 15%;'>"+data[i].type+"</td>" +
+                        "<td style='font-size:14px;width: 15%;'>"+data[i].operate+"</td><td style='font-size:14px;width: 25%;'>"+getMyDate(data[i].create_time)+"</td>"
+                    html+="</tr>"
+                }
+                if(pagesize != data.length){
+                    for(var j = 0;j<pagesize-data.length;j++){
+                        html+="<tr style='height:37px;'></tr>";
+                    }
+                }
+                $('#logList').html(html);
+                $('#tiaoshu').text(response.total)
+                pageSum=response.total/pagesize;
+                pageSum=Math.ceil(pageSum);
+                var pageInSum=pageNow+"/"+pageSum
+                $('#pageNum').text(pageInSum);
+            } else {
+                win.alert('提示',response.msg);
+            }
+        });
+    }
+
+    //初始化为第一页 获取日志列表
+    getLogsList();
+    //第一页
+    function first(){
+        if(pageNow==1){
+            win.alert("提示","已是第一页");
+            return;
+        }
+        pageNow=1;
+        getLogsList();
+    }
+    //上一页
+    function prevpage(){
+        if(pageNow==1){
+            win.alert("提示","已是第一页");
+            return
+        }
+        pageNow--;
+        getLogsList();
+    }
+    //下一页
+    function nextpage(){
+        if(pageNow==pageSum){
+            win.alert("提示","已是最后一页");
+            return;
+        }
+        pageNow++;
+        getLogsList();
+    }
+    //最后一页
+    function last(){
+        if(pageNow==pageSum){
+            win.alert("提示","已是最后一页");
+            return;
+        }
+        pageNow=pageSum;
+        getLogsList();
+    }
+    //按页数查询
+    function selectByPage(){
+        if($('#ty').val()==''){
+            pageNow=1;
+            getLogsList();
+            return;
+        }else if($('#ty').val()<1||$('#ty').val()>pageSum){
+            win.alert('提示','输入页数为正数且不能大于'+pageSum);
+            $('#ty').val('');
+            return;
+        }else{
+            pageNow=$('#ty').val();
+             getLogsList();
+            return;
+        }
+
+    }
+    //转换时间
+    function getMyDate(timeStamp) {
+        var newDate = new Date();
+        newDate.setTime(timeStamp);
+        Date.prototype.pattern=function(fmt) {
+            var o = {
+                "M+" : this.getMonth()+1, //月份
+                "d+" : this.getDate(), //日
+                "h+" : this.getHours(), //小时
+                "H+" : this.getHours(), //小时
+                "m+" : this.getMinutes(), //分
+                "s+" : this.getSeconds(), //秒
+                "q+" : Math.floor((this.getMonth()+3)/3), //季度
+                "S" : this.getMilliseconds() //毫秒
+            };
+            var week = {
+                "0" : "/u65e5",
+                "1" : "/u4e00",
+                "2" : "/u4e8c",
+                "3" : "/u4e09",
+                "4" : "/u56db",
+                "5" : "/u4e94",
+                "6" : "/u516d"
+            };
+            if(/(y+)/.test(fmt)){
+                fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+            }
+            if(/(E+)/.test(fmt)){
+                fmt=fmt.replace(RegExp.$1, ((RegExp.$1.length>1) ? (RegExp.$1.length>2 ? "/u661f/u671f" : "/u5468") : "")+week[this.getDay()+""]);
+            }
+            for(var k in o){
+                if(new RegExp("("+ k +")").test(fmt)){
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+                }
+            }
+            return fmt;
+        }
+
+        return newDate.pattern("yyyy-MM-dd hh:mm:ss");
+    };
+    //选中默认每页条数查询
+    function selectPageSize(){
+        for(var i=0;i<$('#pagesize option').length;i++){
+            if($('#pagesize option').eq(i).is(':selected') == true){
+                pagesize = $('#pagesize option').eq(i).val();
+                selectByPage();
+            }
+        }
+    }
+</script>
+</html>

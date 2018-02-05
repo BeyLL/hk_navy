@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="assets/css/reset.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fontSize/iconfont.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/register.css">
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="logo">
+    <img src="assets/images/logo.png" alt="">
+</div>
+<div class="register" style="border-radius:10px">
+    <div class="register_header" style="font-weight:bold">
+        <span class="left" style="color:#416496" id="admin">管理员</span>
+        <span class="user">普通用户</span>
+    </div>
+    <div class="register_footer">
+        <div class="container">
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-md-1 control-label" for="username">用户名:</label>
+                    <div class="col-md-2">
+                        <input class="form-control" id="username" type="text"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-md-1 control-label" for="number">证件号:</label>
+                    <div class="col-md-2">
+                        <input class="form-control" id="number" type="text"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-md-1 control-label" for="password">密码:</label>
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <input class="form-control" id="password" type="text"/>
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default " style="padding:6px 7px;"
+                                        aria-haspopup="true"><span
+                                        class="iconfont icon-yanjing" style="color:#16578d;font-size:12px"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="remember clearfix" style="padding:8px 73px 8px 164px;
+    color:#fff;">
+        <div class="rem_left" style="float:left">
+            <input type="checkbox">
+            <span>记住密码</span>
+        </div>
+        <span style="float:right;margin-top:2px;" id="register">注册账户</span>
+    </div>
+    <div style="margin-top:40px;">
+            <button type="button" class="btn btn-default" style="display:inline-block;
+    width:300px;
+    color:#295290;
+    border-radius:18px;font-weight:bold" id="login">登录</button>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $("#login").click(function(){
+        var data = {};
+        data.role_id = 1;
+        data.name = $("#username").val();
+        data.show_pass = $("#password").val();
+        data.card_id = $("#number").val();
+        data=JSON.stringify(data);
+        console.log(data);
+        $.ajax({
+            url:"/userLogin",
+            type:"post",
+            dataType:"json",
+            async:false,
+            headers:{'Content-Type':'application/json'},
+            data:data,
+            timeOut:10000,
+            success:function(data) {
+                console.log(data);
+                if(data.code == 0){
+                    alert(data.msg);
+                    window.location.href = "shouye.html";
+                }else{
+                    alert(data.msg);
+                }
+            },
+            error:function(XMLHttpRequest,textStatus,errorThrown){
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+        })
+    });
+    $('#admin').click(function () {
+        window.location.href = "index.html";
+    })
+    $('#register').click(function () {
+        window.location.href = 'register.html';
+    })
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

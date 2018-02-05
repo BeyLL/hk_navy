@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>系统管理</title>
+    <link rel="stylesheet" href="assets/css/reset.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fontSize/iconfont.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/person.css">
+    <link rel="stylesheet" href="assets/css/systemManage.css">
+    <link rel="stylesheet" href="assets/js/alert/window.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-table.min.css">
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="assets/js/localStorageUtils.js"></script>
+    <script type="text/javascript" src="assets/js/alert/window.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-table.min.js"></script>
+</head>
+<body>
+<!--顶部logo-->
+<div class="header">
+    <img src="assets/images/header.png" alt="">
+</div>
+<!--内容部分-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" style=" padding:0;">
+            <div class="introduce">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="foot">首页</li>
+                    <li><a href="person.html" style="color:#fff">人员管理</a></li>
+                    <li><a href="score.html" style="color:#fff">成绩管理</a></li>
+                    <li><a href="infomation.html" style="color:#fff">信息资料</a></li>
+                    <li><a href="course.html" style="color:#fff">远程教学</a></li>
+                    <li><a href="testScore.html" style="color:#fff">远程考核</a></li>
+                    <li><a href="systemManage.html" style="color:#fff" class="pitch">系统管理</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" style=" padding:0;">
+            <div class="detail">
+                <div class="detail_header">
+                    <div class="header_list">
+                        <div class="detail_left">
+                            <span>所属单位 </span>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" id="top">
+                                    <span>一级单位</span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" id="stair">
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" id="secondary">
+                                    <span>二级单位</span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" id="second">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="detail_right">
+                            <div class="login_left">
+                                <span class="iconfont icon-bangzhu"></span>
+                                <span>帮助中心</span>
+                            </div>
+                            <div class="login_right">
+                                <span class="iconfont icon-tuichu"></span>
+                                <span onclick="logout()">退出登录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail_footer">
+                    <div class="footer_content">
+                        <div class="query clear">
+                            <div class="query_left">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default">
+                                        筛选查询 <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <!--<li><a href="#">Action</a></li>-->
+                                        <!--<li><a href="#">Another action</a></li>-->
+                                        <!--<li><a href="#">Something else here</a></li>-->
+                                        <!--<li role="separator" class="divider"></li>-->
+                                        <!--<li><a href="#">Separated link</a></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="design">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation" class="active"><a href="#">单位管理</a></li>
+                                <li role="presentation"><a href="#">考核管理</a></li>
+                                <li role="presentation"><a href="#">用户管理</a></li>
+                                <li role="presentation"><a href="#">权限管理</a></li>
+                                <li role="presentation"><a href="#">操作记录</a></li>
+                            </ul>
+                            <div id="unit_btn" class=" but log_btn perMiss">
+                                <span id="unit_edit" class="label label-primary" style="cursor: pointer">编辑</span>
+                                <span id="unit_add" class="label label-primary" style="cursor: pointer">添加</span>
+                                <span id="unit_delAll" class="label label-primary" style="cursor: pointer">批量删除</span>
+                            </div>
+                            <div id="check_btn" class="but log_btn">
+                                <span id="check_edit" class="label label-primary" style="cursor: pointer">编辑</span>
+                                <span id="check_add" class="label label-primary" style="cursor: pointer">添加</span>
+                                <span id="check_delAll" class="label label-primary" style="cursor: pointer">批量删除</span>
+                            </div>
+                            <div id="user_btn" class="but log_btn">
+                                <span id="user_add" class="label label-primary" style="cursor: pointer">添加</span>
+                                <span id="user_delAll" class="label label-primary" style="cursor: pointer">批量删除</span>
+                            </div>
+                            <div id="action_btn" class="but log_btn">
+                                <span id="action_add" class="label label-primary" style="cursor: pointer">添加</span>
+                            </div>
+                            <div id="log_btn" class="but log_btn"></div>
+                        </div>
+                        <div class="box" style="display: none;" id="user_bianji">
+                            <div class="bianji">
+                                <p>用户编辑</p>
+                                <div class="bianji_div">
+                                    <li id="xm">
+                                        <span>姓名：</span>
+                                        <input id="ximing" type="text">
+                                    </li>
+                                    <li id="zjh">
+                                        <span>证件号：</span>
+                                        <input id="zhengjianhao" type="text">
+
+                                    </li>
+                                    <li id="pass">
+                                        <input id="mm" type="text">
+                                    </li>
+                                    <li id="unit_firstss">
+                                        <span>一级单位：</span>
+                                        <select onchange="selectchanges()"  id="unit_firsts">
+                                            <option value=''>- - - - 请选择- - - - </option>
+                                        </select>
+                                    </li>
+                                    <li id="unit_secondss">
+                                        <span>二级单位：</span>
+                                        <select  id="unit_seconds">
+                                            <option value=''>-请选择一级单位-</option>
+                                        </select>
+                                    </li>
+                                    <li id="peoples">
+                                        <span>创建人：</span>
+                                        <input type="text" id="cjrs">
+                                    </li>
+                                    <li id="dates">
+                                        <span>创建日期：</span>
+                                        <input id="cjrqs" type="date">
+                                    </li>
+                                    <li id="push">
+                                        <span>是否推送：</span>
+                                        <input value="0" checked type="radio" name="leixingraido">&nbsp<span style="margin-right: 15px;width: auto;">推送</span>
+                                        <input value="1" type="radio" name="leixingraido">&nbsp<span style="margin-right: 15px;width: auto;">不推送</span>
+                                    </li>
+                                    <li id="buts" style="text-align: center;">
+                                        <button onclick="close1()" style="width: 70px;height: 30px;border: 1px solid #cdcdcd;background: none;border-radius: 5%;" id="closes">取消</button>
+                                        <button onclick="upload()" style="width: 70px;height: 30px;border: 1px solid #cdcdcd;background: none;border-radius: 5%;background: #2B90E2;margin-left: 40px" id="quedings">保存</button>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="system">
+                            <div class="personList sameList perMiss" style="overflow-x: auto;">
+                                <table class="table table-bordered ">
+                                    <thead>
+                                    <tr style='background: #1458a7;color: #fff'>
+                                        <th style="white-space: nowrap;font-size: 15px;">序号</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">一级单位</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">二级单位</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="content">
+                                    <tr>
+                                        <td style="white-space: nowrap;font-size: 15px;">1</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">一营</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">二营</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="white-space: nowrap;font-size: 15px;">2</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">一营</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">二营</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="white-space: nowrap;font-size: 15px;">3</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">一营</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">二营</td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="personList sameList" style="overflow-x: auto;">
+                                <table class="table table-bordered  data-toggle" data-toggle="table">
+                                    <thead>
+                                    <tr style='background: #1458a7;color: #fff'>
+                                        <th style="font-size: 15px;" data-rowspan="2">序号</th>
+                                        <th style="font-size: 15px;" data-colspan="2">一级单位</th>
+                                        <th style="font-size: 15px;" data-colspan="2">二级单位</th>
+                                    <tr>
+                                    <tr>
+                                        <th  style="font-size: 15px;"></th>
+                                        <th  style="font-size: 15px;">项目名称</th>
+                                        <th  style="font-size: 15px;">项目权重</th>
+                                        <th  style="font-size: 15px;">项目名称</th>
+                                        <th  style="font-size: 15px;">项目权重</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="content">
+                                    <tr>
+                                        <td style="white-space: nowrap;font-size: 15px;">1</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">一营</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">二营</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="white-space: nowrap;font-size: 15px;">2</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">一营</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">二营</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="white-space: nowrap;font-size: 15px;">3</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">一营</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">二营</td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="personList">
+                                <div style="overflow-x: auto;">
+                                    <table class="table table-bordered ">
+                                        <thead>
+                                        <tr style='background: #1458a7;color: #fff'>
+                                            <th style="white-space: nowrap;font-size: 15px;"><input id='allcheck' onchange='allcheck()' type='checkbox'/></th>
+                                            <th style="white-space: nowrap;font-size: 15px;">序号</th>
+                                            <th style="white-space: nowrap;font-size: 15px;">角色名称</th>
+                                            <th style="white-space: nowrap;font-size: 15px;">姓名</th>
+                                            <th style="white-space: nowrap;font-size: 15px;">证件号</th>
+                                            <th style="white-space: nowrap;font-size: 15px;">账户密码</th>
+                                            <th style="white-space: nowrap;font-size: 15px;">电子邮箱</th>
+                                            <th style="white-space: nowrap;font-size: 15px;">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="content" id="userList"></tbody>
+                                    </table>
+                                </div>
+                                <div style="float: right;padding:0px 29px">
+                                    <p style="box-sizing: border-box">
+                                        <button onclick="user_first()" class="btn btn-primary btn-sm" id="user_sy">第一页</button>
+                                        <button onclick="user_prevpage()" class="btn btn-primary btn-sm" id="user_syy">上一页</button>
+                                        <button onclick="user_nextpage()" class="btn btn-primary btn-sm" id="user_xyy">下一页</button>
+                                        <button onclick="user_last()" class="btn btn-primary btn-sm" id="user_my">最后一页</button>
+                                        共<span style="text-align: center;width:45px;display: inline-block;" id="user_tiaoshu"></span>条，
+                                        <!--每页<select onchange="user_selectPageSize()" name="" id="user_pagesize">-->
+                                        <!--<option value="10">10</option>-->
+                                        <!--<option value="20">20</option>-->
+                                        <!--<option value="30">30</option>-->
+                                    <!--</select>条,-->
+                                        第<span style="text-align: center;width:74px;display: inline-block;" id="user_pageNum"></span>页，
+                                        跳转至<input style="width: 50px;" id="user_ty" value="" />页
+                                        <button onclick="user_selectByPage()" id="user_tz" class="btn btn-primary btn-sm">确定</button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="personList">
+                                <div style="overflow-x: auto;">
+                                    <table class="table table-bordered ">
+                                        <thead>
+                                        <tr style='background: #1458a7;color: #fff'><th style="white-space: nowrap;font-size: 15px;">序号</th><th style="white-space: nowrap;font-size: 15px;">用户角色</th><th style="white-space: nowrap;font-size: 15px;">权限</th><th style="white-space: nowrap;font-size: 15px;">操作</th></tr>
+                                        </thead>
+                                        <tbody class="content" id="actionList"></tbody>
+                                    </table>
+                                </div>
+                                <div style="float: right;padding:0px 29px">
+                                    <p style="box-sizing: border-box">
+                                        <button onclick="action_first()" class="btn btn-primary btn-sm" id="action_sy">第一页</button>
+                                        <button onclick="action_prevpage()" class="btn btn-primary btn-sm" id="action_syy">上一页</button>
+                                        <button onclick="action_nextpage()" class="btn btn-primary btn-sm" id="action_xyy">下一页</button>
+                                        <button onclick="action_last()" class="btn btn-primary btn-sm" id="action_my">最后一页</button>
+                                        共<span style="text-align: center;width:45px;display: inline-block;" id="action_tiaoshu"></span>条，
+                                        <!--每页<select onchange="action_selectPageSize()" name="" id="action_pagesize">-->
+                                        <!--<option value="10">10</option>-->
+                                        <!--<option value="20">20</option>-->
+                                        <!--<option value="30">30</option>-->
+                                    <!--</select>条,-->
+                                        第<span style="text-align: center;width:74px;display: inline-block;" id="action_pageNum"></span>页，
+                                        跳转至<input style="width: 50px;" id="action_ty" value="" />页
+                                        <button onclick="action_selectByPage()" id="action_tz" class="btn btn-primary btn-sm">确定</button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="personList">
+                                <div style="overflow-x: auto;">
+                                    <table class="table table-bordered ">
+                                        <thead>
+                                        <tr style='background: #1458a7;color: #fff'>
+                                            <th style="white-space: nowrap;font-size: 15px;">序号</th>
+                                            <th style="white-space: nowrap;font-size: 15px;">操作员</th>
+                                            <th style="white-space: nowrap;font-size: 15px;">操作模块</th>
+                                            <th style="white-space: nowrap;font-size: 15px;">操作内容</th>
+                                            <th style="white-space: nowrap;font-size: 15px;">操作时间</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="content" id="logList"></tbody>
+                                    </table>
+                                </div>
+                                <div style="float: right;padding:0px 29px">
+                                    <p style="box-sizing: border-box">
+                                        <button onclick="first()" class="btn btn-primary btn-sm" id="log_sy">第一页</button>
+                                        <button onclick="prevpage()" class="btn btn-primary btn-sm" id="log_syy">上一页</button>
+                                        <button onclick="nextpage()" class="btn btn-primary btn-sm" id="log_xyy">下一页</button>
+                                        <button onclick="last()" class="btn btn-primary btn-sm" id="log_my">最后一页</button>
+                                        共<span style="text-align: center;width:45px;display: inline-block;" id="log_tiaoshu"></span>条，
+                                        <!--每页<select onchange="selectPageSize()" name="" id="log_pagesize">-->
+                                        <!--<option value="10">10</option>-->
+                                        <!--<option value="20">20</option>-->
+                                        <!--<option value="30">30</option>-->
+                                    <!--</select>条,-->
+                                        第<span style="text-align: center;width:74px;display: inline-block;" id="log_pageNum"></span>页，
+                                        跳转至<input style="width: 50px;" id="log_ty" value="" />页
+                                        <button onclick="selectByPage()" id="log_tz" class="btn btn-primary btn-sm">确定</button>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="assets/js/public.js"></script>
+<script type="text/javascript" src="assets/js/systemManage.js"></script>
+</body>
+
+</html>

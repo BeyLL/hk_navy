@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人员添加</title>
+    <link rel="stylesheet" href="assets/css/reset.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fontSize/iconfont.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/person.css">
+    <link rel="stylesheet" href="assets/css/personAdd.css">
+    <link rel="stylesheet" href="assets/js/alert/window.css">
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/localStorageUtils.js"></script>
+    <script type="text/javascript" src="assets/js/alert/window.js"></script>
+</head>
+<body>
+<!--顶部logo-->
+<div class="header">
+    <img src="assets/images/header.png" alt="">
+</div>
+<!--内容部分-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" style=" padding:0;">
+            <div class="introduce">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="foot">首页</li>
+                    <li><a href="person.html" style="color:#fff">人员管理</a></li>
+                    <li><a href="score.html" style="color:#fff">成绩管理</a></li>
+                    <li><a href="infomation.html" style="color:#fff">信息资料</a></li>
+                    <li><a href="course.html" style="color:#fff">远程教学</a></li>
+                    <li><a href="testScore.html" style="color:#fff">远程考核</a></li>
+                    <li><a href="systemManage.html" style="color:#fff">系统管理</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" style=" padding:0;">
+            <div class="detail">
+                <div class="detail_header">
+                    <div class="header_list">
+                        <div class="detail_left">
+                            <span>所属单位 </span>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    一级单位 <span class="caret"></span>
+                                </button>
+
+                                <ul class="dropdown-menu" id="stair">
+                                    <!--<li><a href="#">Action</a></li>-->
+                                    <!--<li><a href="#">Another action</a></li>-->
+                                    <!--<li><a href="#">Something else here</a></li>-->
+                                    <!--<li><a href="#">Separated link</a></li>-->
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    二级单位 <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" id="second">
+                                    <!--<li><a href="#">Action</a></li>-->
+                                    <!--<li><a href="#">Another action</a></li>-->
+                                    <!--<li><a href="#">Something else here</a></li>-->
+                                    <!--<li role="separator" class="divider"></li>-->
+                                    <!--<li><a href="#">Separated link</a></li>-->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="detail_right">
+                            <div class="login_left">
+                                <span class="iconfont icon-bangzhu"></span>
+                                <span>帮助中心</span>
+                            </div>
+                            <div class="login_right">
+                                <span class="iconfont icon-tuichu"></span>
+                                <span onclick="logout()">退出登录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail_footer">
+                    <div class="footer_content">
+                        <div class="process">
+                            <span><a href="person.html">人员管理</a></span>
+                            <span class="iconfont icon-youjiantou1"></span>
+                            <span>人员添加</span>
+                        </div>
+                        <div class="list">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="unit_first">一级单位:</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" id="unit_first" onchange="getsecondunit()" style="height: 34px;font-size: 14px">
+
+                                        </select>
+                                        <div class="input-group">
+                                            <!--<input type="text" class="form-control" id="ds_host" />-->
+                                            <div class="input-group-btn">
+                                                <!--<button type="button" class="btn btn-default dropdown-toggle"-->
+                                                <!--data-toggle="dropdown"-->
+                                                <!--aria-haspopup="true" aria-expanded="false"><span-->
+                                                <!--class="caret"></span></button>-->
+                                                <!--<ul class="dropdown-menu">-->
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="unit_second">二级单位:</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" id="unit_second" >
+                                            <option>请选择一级单位</option>
+                                        </select>
+                                        <div class="input-group">
+                                            <!--<input class="form-control" type="text" id="ds_second"/>-->
+                                            <div class="input-group-btn">
+                                                <!--<button type="button" class="btn btn-default dropdown-toggle"-->
+                                                <!--data-toggle="dropdown"-->
+                                                <!--aria-haspopup="true" aria-expanded="false"><span-->
+                                                <!--class="caret"></span></button>-->
+                                                <!--<ul class="dropdown-menu">-->
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_username">姓名:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="ds_username" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_usersex">性别:</label>
+                                    <div class="col-md-8">
+                                        <input type="radio" id="ds_usersex" name="radiobutton" value="radiobutton"> 男
+                                        <input type="radio" id="ds_user" name="radiobutton" value="radiobutton"
+                                               style="margin-left:15px;margin-top:10px;"> 女
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_userdate">出生日期:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="ds_userdate" type="date"/>
+                                        <div class="input-group">
+                                            <!--<div class="input-group-btn">-->
+                                            <!--<button type="button" class="btn btn-default dropdown-toggle"-->
+                                            <!--data-toggle="dropdown"-->
+                                            <!--aria-haspopup="true" aria-expanded="false"><span-->
+                                            <!--class="caret"></span></button>-->
+                                            <!--<ul class="dropdown-menu">-->
+                                            <!--</ul>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_usernation">民族:</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" id="ds_usernation">
+                                            <option></option>
+                                            <option value="1">汉族</option>
+                                            <option value="2">蒙古族</option>
+                                            <option value="3">回族</option>
+                                            <option value="4">藏族</option>
+                                            <option value="5">维吾尔族</option>
+                                            <option value="6">苗族</option>
+                                            <option value="7">彝族</option>
+                                            <option value="8">壮族</option>
+                                            <option value="9">布依族</option>
+                                            <option value="10">朝鲜族</option>
+                                            <option value="11">满族</option>
+                                            <option value="12">侗族</option>
+                                            <option value="13">瑶族</option>
+                                            <option value="14">白族</option>
+                                            <option value="15">土家族</option>
+                                            <option value="16">哈尼族</option>
+                                            <option value="17">哈萨克族</option>
+                                            <option value="18">傣族</option>
+                                            <option value="19">黎族</option>
+                                            <option value="20">傈僳族</option>
+                                            <option value="21">佤族</option>
+                                            <option value="22">畲族</option>
+                                            <option value="23">高山族</option>
+                                            <option value="24">拉祜族</option>
+                                            <option value="25">水族</option>
+                                            <option value="26">东乡族</option>
+                                            <option value="27">纳西族</option>
+                                            <option value="28">景颇族</option>
+                                            <option value="29">柯尔克孜族</option>
+                                            <option value="30">土族</option>
+                                            <option value="31">达斡尔族</option>
+                                            <option value="32">仫佬族</option>
+                                            <option value="33">羌族</option>
+                                            <option value="34">布朗族</option>
+                                            <option value="35">撒拉族</option>
+                                            <option value="36">毛南族</option>
+                                            <option value="37">仡佬族</option>
+                                            <option value="38">锡伯族</option>
+                                            <option value="39">阿昌族</option>
+                                            <option value="40">普米族</option>
+                                            <option value="41">塔吉克族</option>
+                                            <option value="42">怒族</option>
+                                            <option value="43">乌孜别克族</option>
+                                            <option value="44">俄罗斯族</option>
+                                            <option value="45">鄂温克族</option>
+                                            <option value="46">德昂族</option>
+                                            <option value="47">保安族</option>
+                                            <option value="48">裕固族</option>
+                                            <option value="49">京族</option>
+                                            <option value="50">塔塔尔族</option>
+                                            <option value="51">独龙族</option>
+                                            <option value="52">鄂伦春族</option>
+                                            <option value="53">赫哲族</option>
+                                            <option value="54">门巴族</option>
+                                            <option value="55">珞巴族</option>
+                                            <option value="56">基诺族</option>
+                                        </select>
+                                        <div class="input-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_userculture">文化程度:</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" id="ds_userculture">
+                                            <option></option>
+                                            <option>小学</option>
+                                            <option>初中</option>
+                                            <option>高中</option>
+                                            <option>中专</option>
+                                            <option>大专</option>
+                                            <option>本科</option>
+                                            <option>硕士</option>
+                                            <option>博士</option>
+                                        </select>
+                                        <div class="input-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_usermajor">人员类型:</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" id="ds_usermajor">
+                                            <option></option>
+                                            <option>新兵</option>
+                                            <option>本部人员</option>
+                                            <option>士官</option>
+                                            <option>其他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_userface">政治面貌:</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" id="ds_userface">
+                                            <option></option>
+                                            <option>群众</option>
+                                            <option>共青团员</option>
+                                            <option>中共党员</option>
+                                            <option>其他</option>
+                                        </select>
+                                        <div class="input-group">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_usernative">籍贯:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="ds_usernative" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_usercoach">家庭住址:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="ds_usercoach" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_userremark">备注:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="ds_userremark" type="text"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="cancel">
+                            <button type="button" class="btn btn-default" onclick="cancel()" style="margin-top: 0px">重置</button>
+                            <button type="button" class="btn btn-primary" onclick="baocun()" style="margin-top: 0px">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="assets/js/public.js"></script>
+<script type="text/javascript" src="assets/js/personAdd.js"></script>
+<script type="text/javascript" src="assets/js/tools.js"></script>
+</html>

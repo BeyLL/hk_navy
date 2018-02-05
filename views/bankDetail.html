@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>考核详情</title>
+    <link rel="stylesheet" href="assets/css/reset.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/person.css">
+    <link rel="stylesheet" href="assets/css/personAdd.css">
+    <link rel="stylesheet" href="assets/js/alert/window.css">
+    <link rel="stylesheet" href="assets/fontSize/iconfont.css">
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/localStorageUtils.js"></script>
+    <script type="text/javascript" src="assets/js/public.js"></script>
+    <script type="text/javascript" src="assets/js/alert/window.js"></script>
+</head>
+<body>
+<!--顶部logo-->
+<div class="header">
+    <img src="assets/images/header.png" alt="">
+</div>
+<!--内容部分-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" style=" padding:0;">
+            <div class="introduce">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="foot">所属单位</li>
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>三十八军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>三十军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>二十八军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>九十八军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" style=" padding:0;">
+            <div class="detail">
+                <div class="detail_header">
+                    <div class="header_list">
+                        <div class="detail_left">
+                            <ul class="choice">
+                                <li><a href="shouye.html">首页</a></li>
+                                <li><a href="person.html">人员管理</a></li>
+                                <li><a href="score.html">成绩管理</a></li>
+                                <li><a href="infomation.html">信息资料</a></li>
+                                <li><a href="course.html">远程教学</a></li>
+                                <li class="default"><a href="testInfo.html">远程考核</a></li>
+                                <li><a href="systemManage.html">系统管理</a></li>
+                            </ul>
+                        </div>
+                        <div class="detail_right">
+                            <div class="login_left">
+                                <span class="iconfont icon-bangzhu"></span>
+                                <span>帮助中心</span>
+                            </div>
+                            <div class="login_right">
+                                <span class="iconfont icon-tuichu"></span>
+                                <span onclick = "logout()">退出登录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail_footer">
+                    <div class="footer_content">
+                        <div class="process">
+                            <span>远程考核</span>
+                            <span class="iconfont icon-youjiantou1"></span>
+                            <span>题库信息</span>
+                            <span class="iconfont icon-youjiantou1"></span>
+                            <span>2018年第一季度考核</span>
+                            <span class="iconfont icon-youjiantou1"></span>
+                            <span>军事理论</span>
+                        </div>
+                        <div class="design">
+                            <div class="but">
+                                <span class="label label-primary">添加</span>
+                                <span class="label label-primary">删除</span>
+                            </div>
+                        </div>
+                        <div class="personList">
+                            <div style="overflow-x: auto;">
+                                <table class="table table-bordered ">
+                                    <thead>
+                                    <tr style='background: #1458a7;color: #fff'>
+                                        <th style="white-space: nowrap;font-size: 15px;">序号</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">试题列表</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">创建人</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">创建日期</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="content">
+                                    <tr>
+                                        <td style="white-space: nowrap;font-size: 15px;">1</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">一营</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">一连</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">王思成</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">
+                                            <span class="iconfont icon-addInfo" style="display: inline-block;margin-right:15px;"></span>
+                                            <span class="iconfont icon-xiazai1"></span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function logout() {
+        alert(11);
+        var data={};
+	
+        data.user = readData("USER_KEY").name;
+        data.token = readData("USER_KEY").token;
+        //data.user = "张三";
+        //data.token = "b2600a653fa8f614f309e34056806bda";
+        data = JSON.stringify(data);
+        alert(data);
+        $.ajax({
+            url:"/userLoginout",
+            type:"post",
+            dataType:"json",
+            headers:{'Content-Type':'application/json'},
+            data:data,
+            success:function(data) {
+                console.log(data);
+                if(data.code == 0){
+                    win.alert("提示",response.msg,function () {
+                        window.location.href='login.html';
+                    })
+                }else {
+                    win.alert('提示',response.msg);
+                }
+            }
+        })
+//        alert(1);
+//        var settings = {
+//            "url":"/userLoginout",
+//            "method": "POST",
+//            "dataType":"json",
+//            "data":{
+//                //user:localStorage.getItem('USER_K'),
+//                //token:localStorage.getItem('pctoken'),
+//                user:"张三",
+//                token:"b2600a653fa8f614f309e34056806bda",
+//            }
+//        }
+//        $.ajax(settings).done(function (response) {
+//            if (response.code == 0) {
+//                win.alert("提示",response.msg,function () {
+//                    window.location.href='login.html';
+//                })
+//            }else{
+//                win.alert('提示',response.msg);
+//            }
+//        })
+    }
+</script>
+</html>

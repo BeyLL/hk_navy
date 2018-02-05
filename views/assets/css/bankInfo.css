@@ -1,0 +1,34 @@
+.container .footer_content .question{
+    padding:0 10px;
+    width:100%;
+    height:500px;
+}
+
+.container .footer_content .question ul li{
+    position: relative;
+    display:inline-block;
+    margin-right:20px;
+    margin-top:10px;
+    width:22%;
+    height:240px;
+    line-height: 120px;
+    border:1px solid #c8c8cc;
+    text-align:center;
+    color:#000;
+}
+
+/*.container .footer_content .question ul li div{*/
+    /*position:absolute;*/
+    /*top:50%;*/
+    /*left: 30%;*/
+    /*margin-top:-60px;*/
+/*}*/
+
+.container .footer_content .question ul li span{
+    display: block;
+}
+
+.container .footer_content .question ul li .iconfont{
+  font-size:48px;
+    color:#499ee1;
+}

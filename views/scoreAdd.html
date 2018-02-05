@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>成绩添加</title>
+    <link rel="stylesheet" href="assets/css/reset.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fontSize/iconfont.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/person.css">
+    <link rel="stylesheet" href="assets/css/personAdd.css">
+    <link rel="stylesheet" href="assets/js/alert/window.css">
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/localStorageUtils.js"></script>
+    <script type="text/javascript" src="assets/js/public.js"></script>
+    <script type="text/javascript" src="assets/js/alert/window.js"></script>
+</head>
+<body>
+<!--顶部logo-->
+<div class="header">
+    <img src="assets/images/header.png" alt="">
+</div>
+<!--内容部分-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" style=" padding:0;">
+            <div class="introduce">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="foot">所属单位</li>
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>三十八军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>三十军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>二十八军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>九十八军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" style=" padding:0;">
+            <div class="detail">
+                <div class="detail_header">
+                    <div class="header_list">
+                        <div class="detail_left">
+                            <ul class="choice">
+                                <li><a href="shouye.html">首页</a></li>
+                                <li ><a href="person.html">人员管理</a></li>
+                                <li  class="default"><a href="score.html">成绩管理</a></li>
+                                <li><a href="infomation.html">信息资料</a></li>
+                                <li><a href="course.html">远程教学</a></li>
+                                <li ><a href="testInfo.html">远程考核</a></li>
+                                <li><a href="systemManage.html">系统管理</a></li>
+                            </ul>
+                        </div>
+                        <div class="detail_right">
+                            <div class="login_left">
+                                <span class="glyphicon glyphicon-question-sign"></span>
+                                <span>帮助中心</span>
+                            </div>
+                            <div class="login_right">
+                                <span class="glyphicon glyphicon-log-out"></span>
+                                <span onclick="logout()">退出登录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail_footer">
+                    <div class="footer_content">
+                        <div class="process">
+                            <span>成绩管理</span>
+                            <span class="iconfont icon-youjiantou1"></span>
+                            <span>成绩管理列表</span>
+                            <span class="iconfont icon-youjiantou1"></span>
+                            <span>成绩添加</span>
+                        </div>
+                        <div class="list">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_host">一级单位:</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <input class="form-control" id="ds_host" type="text"/>
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle"
+                                                        data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"><span
+                                                        class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_second">二级单位:</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <input class="form-control" id="ds_second" type="text"/>
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle"
+                                                        data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"><span
+                                                        class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_username">考核项目:</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <input class="form-control" id="ds_username" type="text"/>
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle"
+                                                        data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"><span
+                                                        class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_userdate">考核科目:</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <input class="form-control" id="ds_userdate" type="text"/>
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle"
+                                                        data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"><span
+                                                        class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_usernation">考生编号:</label>
+                                    <div class="col-md-8">
+                                            <input class="form-control" id="ds_usernation" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_userculture">姓名:</label>
+                                    <div class="col-md-8">
+                                            <input class="form-control" id="ds_userculture" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_usermajor">考核成绩:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="ds_usermajor" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_userface">成绩评定:</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <input class="form-control" id="ds_userface" type="text"/>
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle"
+                                                        data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"><span
+                                                        class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_usernative">考核日期:</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <input class="form-control" id="ds_usernative" type="text"/>
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle"
+                                                        data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"><span
+                                                        class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ds_userremark">备注:</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="ds_userremark" type="text"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="cancel">
+                            <button type="button" class="btn btn-default">取消</button>
+                            <button type="button" class="btn btn-primary">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>成绩首页</title>
+    <link rel="stylesheet" href="assets/css/reset.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fontSize/iconfont.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/person.css">
+    <link rel="stylesheet" href="assets/css/personAdd.css">
+    <link rel="stylesheet" href="assets/css/scoreAnalyze.css">
+    <link rel="stylesheet" href="assets/js/alert/window.css">
+    <link rel="stylesheet" href="assets/css/infomation.css">
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="assets/js/localStorageUtils.js"></script>
+    <script type="text/javascript" src="assets/js/alert/window.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/echarts.js"></script>
+</head>
+<body>
+<!--顶部logo-->
+<div class="header">
+    <img src="assets/images/header.png" alt="">
+</div>
+<!--内容部分-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" style=" padding:0;">
+            <div class="introduce">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="foot">首页</li>
+                    <li><a href="person.html" style="color:#fff">人员管理</a></li>
+                    <li><a href="score.html" style="color:#fff" class="pitch">成绩管理</a></li>
+                    <li><a href="infomation.html" style="color:#fff">信息资料</a></li>
+                    <li><a href="course.html" style="color:#fff">远程教学</a></li>
+                    <li><a href="testScore.html" style="color:#fff">远程考核</a></li>
+                    <li><a href="systemManage.html" style="color:#fff">系统管理</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" style=" padding:0;">
+            <div class="box" style="display: none;" id="box">
+                <div class="tianjia">
+                    <p>信息新增</p>
+                    <div class="tianjia_div">
+                        <li id="lx">
+                            <span>类型：</span>
+                            <input value="0" checked type="radio" name="leixingraido">&nbsp<span
+                                style="margin-right: 15px;width: auto;">计划</span>
+                            <input value="1" type="radio" name="leixingraido">&nbsp<span
+                                style="margin-right: 15px;width: auto;">指示</span>
+                            <input value="2" type="radio" name="leixingraido">&nbsp<span
+                                style="margin-right: 15px;width: auto;">训练资料</span>
+                        </li>
+                        <li id="bt">
+                            <span>标题：</span>
+                            <input id="biaoti" type="text">
+
+                        </li>
+                        <li id="nr">
+                            <span>内容：</span>
+                            <form style="display: inline-block;" id="uploadForm">
+                                <input id="file" type="file">
+                            </form>
+
+                            <button onclick="upload()"
+                                    style="width: 60px;border: 1px solid #cdcdcd;background: none;border-radius: 5px;height: 26px;">
+                                上传
+                            </button>
+                        </li>
+                        <li id="unit_firsts">
+                            <span>一级单位：</span>
+                            <select onchange="selectchange()" id="unit_first">
+                                <option value=''>- - - - 请选择- - - -</option>
+                            </select>
+                        </li>
+                        <li id="unit_seconds">
+                            <span>二级单位：</span>
+                            <select id="unit_second">
+                                <option value=''>-请选择一级单位-</option>
+                            </select>
+                        </li>
+                        <li id="people">
+                            <span>创建人：</span>
+                            <input type="text" id="cjr">
+                        </li>
+                        <li id="date">
+                            <span>创建日期：</span>
+                            <input id="cjrq" type="date">
+                        </li>
+                        <li id="but" style="text-align: center;">
+                            <button onclick="close1()"
+                                    style="width: 70px;height: 30px;border: 1px solid #cdcdcd;background: none;border-radius: 5%;"
+                                    id="close">取消
+                            </button>
+                            <button style="width: 70px;height: 30px;border: 1px solid #cdcdcd;background: none;border-radius: 5%;background: #2B90E2;margin-left: 40px"
+                                    id="queding">确定
+                            </button>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="detail_header">
+                    <div class="header_list">
+                        <div class="detail_left">
+                            <span>所属单位 </span>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" id="top">
+                                    <span>一级单位</span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" id="stair">
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" id="secondary">
+                                    <span>二级单位</span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" id="second">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="detail_right">
+                            <div class="login_left">
+                                <span class="iconfont icon-bangzhu"></span>
+                                <span>帮助中心</span>
+                            </div>
+                            <div class="login_right">
+                                <span class="iconfont icon-tuichu"></span>
+                                <span onclick="logout()">退出登录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail_footer">
+                    <div class="footer_content">
+                        <div class="query clear">
+                            <div class="query_left">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default">
+                                        筛选查询 <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="design">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation" class="active"><a href="#">人员记录列表</a></li>
+                                <li role="presentation"><a href="#">图表展示</a></li>
+                            </ul>
+                            <div class="but">
+                                <span style="cursor: pointer;" class="label label-primary" onclick="add()">添加</span>
+                                <span style="cursor: pointer;" class="label label-primary">删除</span>
+                                <span style="cursor: pointer;" class="label label-primary">清空</span>
+                                <span style="cursor: pointer;" class="label label-primary">导出</span>
+                            </div>
+                        </div>
+                        <div class="personList perRecord">
+                            <div style="overflow-x: auto;">
+                                <table class="table table-bordered ">
+                                    <thead>
+                                    <tr style='background: #1458a7;color: #fff'>
+                                        <th style="white-space: nowrap;font-size: 15px;">序号</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">一级单位</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">二级单位</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">考核项目</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">考核科目</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">考生证件号</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">姓名</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">考核成绩</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">成绩评定</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">考核日期</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">备注</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="content" id="scoreList"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div style="float: right;padding:0px 29px">
+                            <p style="box-sizing: border-box">
+                                <button onclick="first()" class="btn btn-primary btn-sm" id="sy">第一页</button>
+                                <button onclick="prevpage()" class="btn btn-primary btn-sm" id="syy">上一页</button>
+                                <button onclick="nextpage()" class="btn btn-primary btn-sm" id="xyy">下一页</button>
+                                <button onclick="last()" class="btn btn-primary btn-sm" id="my">最后一页</button>
+                                共<span style="text-align: center;width:45px;display: inline-block;" id="tiaoshu"></span>条，
+                                每页<select onchange="selectPageSize()" name="" id="pagesize">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                            </select>条,
+                                第<span style="text-align: center;width:74px;display: inline-block;" id="pageNum"></span>页
+                                <input style="width: 50px;" id="ty" value=""/>
+                                <button onclick="selectByPage()" id="tz" class="btn btn-primary btn-sm">确定</button>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="footer_content score_hide">
+                        <div class="process">
+                            <span>成绩管理</span>
+                            <span class="icon-youjiantou1 iconfont"></span>
+                            <span>成绩图表展示</span>
+
+                        </div>
+                        <div class="rater">
+                            <div class="person_train">
+                                <h3>三多</h3>
+                                <div class="person_info">
+                                    <div class="info_left">
+                                        <span class="num">单位：</span>
+                                        <span>一旅一营</span>
+                                    </div>
+                                    <div class="info_right">
+                                        <span class="num">考生编号:</span>
+                                        <span>123466789</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="person_ana" >
+                            <div id="someChart" style="width:800px;height:280px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script type="text/javascript" src="assets/js/public.js"></script>
+<script type="text/javascript" src="assets/js/score.js"></script>
+<script>
+    var pageNow=1;
+    var pageSum;
+    var pagesize=10;
+    getSroreList();
+    //分页查询日志
+    function getSroreList() {
+        var settings = {
+            "url":"getRecord",
+            "method": "POST",
+            "async":"false",
+            "data":{
+                user:readData('USER_KEY').name,
+                token:readData('USER_KEY').token,
+//                user:"张三",
+//                token:"0",
+                card_id:150011,
+                page:pageNow,
+                pageSize:pagesize,
+            }
+        }
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            if(response.code==0){
+                var data=response.data;
+                var html='';
+                for(var i = 0;i<data.length;i++){
+                    if(pageNow==1){
+                        var k=i+1;
+                    }else{
+                        var k = parseInt((pageNow-1)*pagesize+i+1);
+                    }
+                    html+="<tr>"
+                    html+="<td style='font-size:14px;width: 4%;'>"+k+"</td><td style='font-size:14px;width: 5%'>"+data[i].unit_first+"</td>" +
+                        "<td style='font-size:14px;width: 5%;'>"+data[i].unit_second+"</td><td style='font-size:14px;width: 15%;'>"+data[i].project+"</td>" +
+                        "<td style='font-size:14px;width: 10%;'>"+data[i].subject+"</td><td style='font-size:14px;width: 7%;'>"+data[i].card_id+"</td>" +
+                        "<td style='font-size:14px;width: 7%;'>"+data[i].name+"</td><td style='font-size:14px;width: 7%;'>"+data[i].achievement+"</td>" +
+                        "<td style='font-size:14px;width: 7%;'>"+data[i].evaluation+"</td><td style='font-size:14px;width: 15%;'>"+getMyDate(data[i].check_time)+"</td>" +
+                        "<td style='font-size:14px;width: 10%;'>"+data[i].remark+"</td>" +
+                        "<td style='font-size:14px;'><span class='label label-info' style='cursor: pointer;margin-right: 10px' onclick='bianji(" + data[i].id + ")''><i class='glyphicon glyphicon-edit'>&nbsp;</i>编辑</span>" +
+                        "<span class='label label-danger' style='cursor: pointer;' onclick='shanchu(" + data[i].id + ")''><i class='glyphicon glyphicon-remove'>&nbsp;</i>删除</span></td>"
+                    html+="</tr>"
+                }
+                if(pagesize != data.length){
+                    for(var j = 0;j<pagesize-data.length;j++){
+                        html+="<tr style='height:37px;'></tr>";
+                    }
+                }
+                $('#scoreList').html(html);
+                $('#tiaoshu').text(response.total)
+                pageSum=response.total/pagesize;
+                pageSum=Math.ceil(pageSum);
+                var pageInSum=pageNow+"/"+pageSum
+                $('#pageNum').text(pageInSum);
+            } else {
+                win.alert('提示',response.msg);
+            }
+        });
+    }
+
+    //初始化为第一页 获取日志列表
+    getSroreList();
+    //第一页
+    function first(){
+        if(pageNow==1){
+            win.alert("提示","已是第一页");
+            return;
+        }
+        pageNow=1;
+        getSroreList();
+    }
+    //上一页
+    function prevpage(){
+        if(pageNow==1){
+            win.alert("提示","已是第一页");
+            return
+        }
+        pageNow--;
+        getSroreList();
+    }
+    //下一页
+    function nextpage(){
+        if(pageNow==pageSum){
+            win.alert("提示","已是最后一页");
+            return;
+        }
+        pageNow++;
+        getSroreList();
+    }
+    //最后一页
+    function last(){
+        if(pageNow==pageSum){
+            win.alert("提示","已是最后一页");
+            return;
+        }
+        pageNow=pageSum;
+        getSroreList();
+    }
+    //按页数查询
+    function selectByPage(){
+        if($('#ty').val()==''){
+            pageNow=1;
+            getSroreList();
+            return;
+        }else if($('#ty').val()<1||$('#ty').val()>pageSum){
+            win.alert('提示','输入页数为正数且不能大于'+pageSum);
+            $('#ty').val('');
+            return;
+        }else{
+            pageNow=$('#ty').val();
+            getSroreList();
+            return;
+        }
+
+    }
+    //转换时间
+    function getMyDate(timeStamp) {
+        var newDate = new Date();
+        newDate.setTime(timeStamp);
+        Date.prototype.pattern=function(fmt) {
+            var o = {
+                "M+" : this.getMonth()+1, //月份
+                "d+" : this.getDate(), //日
+                "h+" : this.getHours(), //小时
+                "H+" : this.getHours(), //小时
+                "m+" : this.getMinutes(), //分
+                "s+" : this.getSeconds(), //秒
+                "q+" : Math.floor((this.getMonth()+3)/3), //季度
+                "S" : this.getMilliseconds() //毫秒
+            };
+            var week = {
+                "0" : "/u65e5",
+                "1" : "/u4e00",
+                "2" : "/u4e8c",
+                "3" : "/u4e09",
+                "4" : "/u56db",
+                "5" : "/u4e94",
+                "6" : "/u516d"
+            };
+            if(/(y+)/.test(fmt)){
+                fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+            }
+            if(/(E+)/.test(fmt)){
+                fmt=fmt.replace(RegExp.$1, ((RegExp.$1.length>1) ? (RegExp.$1.length>2 ? "/u661f/u671f" : "/u5468") : "")+week[this.getDay()+""]);
+            }
+            for(var k in o){
+                if(new RegExp("("+ k +")").test(fmt)){
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+                }
+            }
+            return fmt;
+        }
+
+        return newDate.pattern("yyyy-MM-dd hh:mm:ss");
+    };
+    //选中默认每页条数查询
+    function selectPageSize(){
+        for(var i=0;i<$('#pagesize option').length;i++){
+            if($('#pagesize option').eq(i).is(':selected') == true){
+                pagesize = $('#pagesize option').eq(i).val();
+                selectByPage();
+            }
+        }
+    }
+
+    function add(){
+        $('.box').css('display','block');
+    }
+</script>
+</html>

@@ -1,0 +1,36 @@
+.container .detail_footer .content_filter {
+    margin: 0 10px;
+    height: 300px;
+    border: 1px solid #eeeef0;
+    overflow:auto;
+}
+
+.container .detail_footer .content_filter ul {
+    margin: 0 10px;
+    border: none;
+
+}
+
+/*.container .detail_footer .content_filter .list-group li{*/
+/*border:none;*/
+/*}*/
+
+.container .detail_footer .content_filter ul li {
+    height: 38px;
+    line-height: 38px;
+    border-bottom: 1px dashed #eeeef0;
+}
+
+.container .detail_footer .content_filter ul li div{
+    display:inline-block;
+}
+
+.content_filter ul li span{
+    display:inline-block;
+    margin:0 10px;
+}
+
+.content_filter ul li div.list_left{
+    margin-right:20px;
+    width:70px;
+}

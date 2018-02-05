@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>想定分发</title>
+    <link rel="stylesheet" href="assets/css/reset.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fontSize/iconfont.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/person.css">
+    <link rel="stylesheet" href="assets/css/personFilter.css">
+    <link rel="stylesheet" href="assets/js/alert/window.css">
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/localStorageUtils.js"></script>
+    <script type="text/javascript" src="assets/js/public.js"></script>
+    <script type="text/javascript" src="assets/js/alert/window.js"></script>
+
+</head>
+<body>
+<!--顶部logo-->
+<div class="header">
+    <img src="assets/images/header.png" alt="">
+</div>
+<!--内容部分-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" style=" padding:0;">
+            <div class="introduce">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="foot">所属单位</li>
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>三十八军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>三十军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>二十八军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>九十八军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" style=" padding:0;">
+            <div class="detail">
+                <div class="detail_header">
+                    <div class="header_list">
+                        <div class="detail_left">
+                            <ul class="choice">
+                                <li><a href="shouye.html">首页</a></li>
+                                <li><a href="person.html">人员管理</a></li>
+                                <li><a href="score.html">成绩管理</a></li>
+                                <li><a href="infomation.html">信息资料</a></li>
+                                <li><a href="course.html">远程教学</a></li>
+                                <li  class="default"><a href="testInfo.html">远程考核</a></li>
+                                <li><a href="systemManage.html">系统管理</a></li>
+                            </ul>
+                        </div>
+                        <div class="detail_right">
+                            <div class="login_left">
+                                <span class="iconfont icon-bangzhu"></span>
+                                <span>帮助中心</span>
+                            </div>
+                            <div class="login_right">
+                                <span class="iconfont icon-tuichu"></span>
+                                <span onclick="logout()">退出登录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail_footer">
+                    <div class="footer_content">
+                        <div class="query clear">
+                            <div class="query_left">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default">
+                                        筛选查询 <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="query_right">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="输入关键词进行搜索"
+                                           style="margin-top:8px;">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default " aria-haspopup="true"><span
+                                                class="glyphicon glyphicon-search" style="color:#16578d"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="design">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation"><a href="testInfo.html">考试信息</a></li>
+                                <li role="presentation"><a href="bankInfo.html">题库信息</a></li>
+                                <li role="presentation"><a href="testPublish.html">考试发布</a></li>
+                                <li role="presentation" class="active"><a href="testLeave.html">想定分发</a></li>
+                                <li role="presentation"><a href="testScore.html">考核成绩</a></li>
+                            </ul>
+                            <div class="but">
+                                <span class="label label-primary">添加</span>
+                                <span class="label label-primary">删除</span>
+                            </div>
+                        </div>
+                        <div class="personList">
+                            <div style="overflow-x: auto;">
+                                <table class="table table-bordered ">
+                                    <thead>
+                                    <tr style='background: #1458a7;color: #fff'>
+                                        <th style="white-space: nowrap;font-size: 15px;">序号</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">想定内容</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">参考用户</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">发布人</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">创建日期</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">发布</th>
+                                        <th style="white-space: nowrap;font-size: 15px;">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="content">
+                                    <tr>
+                                        <td style="white-space: nowrap;font-size: 15px;">1</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">内容1</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">关于xxx的计划</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">张恒</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">2018.1.21</td>
+                                        <td style="white-space: nowrap;font-size: 15px;">
+                                            <span class="label label-primary" style="background:#fff;border:1px solid #416496;color:#416496">发布</span>
+                                        </td>
+                                        <td>
+                                            <span class="iconfont icon-addInfo"></span>
+                                            <span class="iconfont icon-xiugaiziliao"></span>
+                                            <span class="iconfont icon-shanchu"></span>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="bom">
+                            <div>
+                                <button class="btn btn-primary btn-sm">首页</button>
+                                <button class="btn btn-primary btn-sm">上一页</button>
+                            </div>
+
+                            <ul class="pagination" style="margin-bottom:-13px">
+                                <li><a href="#" aria-label="Previous"><span
+                                        aria-hidden="true">1</span></a>
+                                </li>
+                                <li class="active"><a href="#">2 <span class="sr-only">(current)</span></a></li>
+                                <li><a href="#" aria-label="Previous"><span
+                                        aria-hidden="true">3</span></a>
+                                </li>
+                                <li><a href="#" aria-label="Previous"><span
+                                        aria-hidden="true">4</span></a>
+                                </li>
+                            </ul>
+
+                            <div>
+                                <button class="btn btn-primary btn-sm">下一页</button>
+                                <button class="btn btn-primary btn-sm">末页</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+.container .footer_content .process{
+    padding:0 10px;
+    height:50px;
+    line-height:50px;
+}
+
+.container .footer_content .process .pro_left{
+    float:left;
+}
+
+.container .footer_content .process .pro_right{
+    float:right;
+}
+
+.container .footer_content .list{
+    width:400px;
+    margin:30px auto;
+
+}
+
+.container .footer_content .list .form-group{
+    margin-bottom:5px;
+}
+
+.container .footer_content .list .control-label{
+    font-weight:100;
+}
+.container .footer_content .list .form-control,.btn{
+    height:28px;
+
+}
+
+.container .footer_content .list .btn{
+    font-size:0;
+}
+
+.container .footer_content .cancel{
+    width:400px;
+    margin:auto;
+    text-align:center;
+}
+
+.container .footer_content .cancel .btn{
+    margin-top:40px;
+    margin-left:55px;
+    padding:0 12px;
+    font-size:14px;
+}
+
+.container .footer_content .send{
+    float:right;
+    /*display:inline-block;*/
+}
+
+.container .footer_content .send span{
+    display: inline-block;
+
+}
+
+.container .footer_content .send .times{
+    margin-left:30px;
+}

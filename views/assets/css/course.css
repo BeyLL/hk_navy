@@ -1,0 +1,112 @@
+
+.container .detail_footer .course ul li {
+    position: relative;
+    float: left;
+    padding: 0 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 22%;
+    height: 220px;
+    background: url("../images/normal.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.container .detail_footer .course ul li h5 {
+    margin-top: 170px;
+}
+
+.container .detail_footer .course ul li .case {
+    margin-top: 5px;
+    font-size: 12px;
+    width: 100%;
+}
+
+.container .detail_footer .course ul li .case span.left {
+    float: left;
+}
+
+.container .detail_footer .course span.right {
+    float: right
+}
+
+.willDefault {
+    color: #1458a7;
+}
+
+.popups {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 155px;
+    line-height: 155px;
+    filter: Alpha(opacity=50);
+    opacity: .5;
+    background: #000;
+    text-align: center;
+    font-size: 28px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.right_choice {
+    border-bottom: 2px solid #1458a7;
+    color: #1458a7;
+}
+
+.content_profile {
+    margin-top: 10px;
+}
+
+.trouble {
+    display: none;
+    overflow: auto;
+}
+
+.trouble ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.trouble .mentor img {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.trouble .mentor span {
+    display: inline-block;
+}
+
+.trouble .mentor .left {
+    margin-left: 10px;
+    color: #1458a7;
+}
+
+.trouble .mentor .right {
+    float: right;
+}
+
+.trouble .foot {
+    display: block;
+    margin: 20px 0;
+}
+
+.pop {
+    position: absolute;
+    left:0;
+    top:60px;
+    width:100%;
+    height:100%;
+    margin:auto;
+    background: #000;
+    opacity: .5;
+    text-align: center;
+}
+
+.pop .header{
+    width:300px;
+    height:100px;
+    background:#1458a7;
+}
+

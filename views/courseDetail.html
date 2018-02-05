@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>远程教学</title>
+    <link rel="stylesheet" href="assets/css/reset.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fontSize/iconfont.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/js/alert/window.css">
+    <link rel="stylesheet" href="assets/css/person.css">
+    <link rel="stylesheet" href="assets/css/personAdd.css">
+    <link rel="stylesheet" href="assets/css/course.css">
+    <script type="text/javascript" src="assets/js/alert/window.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/localStorageUtils.js"></script>
+    <script type="text/javascript" src="assets/js/public.js"></script>
+
+</head>
+<body>
+<!--顶部logo-->
+<div class="header">
+    <img src="assets/images/header.png" alt="">
+</div>
+<!--内容部分-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" style=" padding:0;">
+            <div class="introduce">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="foot">所属单位</li>
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>三十八军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>三十军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>二十八军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="left">-->
+                            <!--<img src="assets/images/soldier.png" alt="">-->
+                            <!--<span>九十八军</span>-->
+                        <!--</div>-->
+                        <!--<div class="right">-->
+                            <!--<span class="icon-youjiantou iconfont "></span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" style=" padding:0;">
+            <div class="detail">
+                <div class="detail_header">
+                    <div class="header_list">
+                        <div class="detail_left">
+                            <ul class="choice">
+                                <li><a href="shouye.html">首页</a></li>
+                                <li><a href="person.html">人员管理</a></li>
+                                <li><a href="score.html">成绩管理</a></li>
+                                <li><a href="infomation.html">信息资料</a></li>
+                                <li class="default"><a href="course.html">远程教学</a></li>
+                                <li><a href="testInfo.html">远程考核</a></li>
+                                <li><a href="systemManage.html">系统管理</a></li>
+                            </ul>
+                        </div>
+                        <div class="detail_right">
+                            <div class="login_left">
+                                <span class="iconfont icon-bangzhu"></span>
+                                <span>帮助中心</span>
+                            </div>
+                            <div class="login_right">
+                                <span class="iconfont icon-tuichu"></span>
+                                <span onclick="logout()">退出登录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail_footer">
+                    <div class="footer_content">
+                        <div class="process">
+                            <div style="float:left">
+                                <span>远程教学</span>
+                                <span class="iconfont icon-youjiantou1"></span>
+                                <span>条令条例</span>
+                                <span class="iconfont icon-youjiantou1"></span>
+                                <span>课程一</span>
+                            </div>
+                            <div style="float:right">
+                                <span class="label label-primary" style="display: inline-block;width:60px;height:30px;line-height: 26px;font-size:12px;">点名</span>
+                                <span class="label label-primary" style="display: inline-block;width:60px;height:30px;line-height: 26px;font-size:12px;">提问</span>
+                            </div>
+                        </div>
+                        <div class="course_detail clear" style="padding: 10px 10px 0 10px;">
+                            <div class="detail_left" style="float:left;width:55%">
+                                <h3>课程一</h3>
+                                <div class="video" style="width:100%;height:400px;background:#000">
+                                </div>
+                                <div class="clear" style="margin-top:10px;">
+                                    <span class="label label-primary" style="float:left;width:95px;height:30px;line-height: 26px;font-size:14px;background:transparent;border: 1px solid #23527c;color:#23527c">开始</span>
+                                    <span class="label label-primary" style="float:right;width:95px;height:30px;line-height: 26px;font-size:14px;background:transparent;border: 1px solid #23527c;color:#23527c">结束</span>
+                                </div>
+                            </div>
+                            <div class="detail_right" style="float:right;width:42%;margin-top:54px;">
+                                <div class="promise" style="width:100%;border-bottom:1px solid #e8e8e8;">
+                                    <span class="right_choice" style="display: inline-block;height:30px;font-weight:bold">课程简介</span>
+                                    <span style="display: inline-block;margin-left:30px;height:30px;font-weight:bold">课程问答</span>
+                                </div>
+                                <div class="content_profile">
+                                    <span>课程内容简介课程内容简介课程内容简介课程内容简介课程内容简介课程内容简介课程内容简介课程内容简介课程内容简介课程内容简介课程内容简介课程内容简介</span>
+                                </div>
+                                <div class="trouble">
+                                     <ul>
+                                         <li>
+                                             <div class="mentor">
+                                                 <img src="assets/images/user.png" alt="">
+                                                 <span class="left">用户A</span>
+                                                 <span class="right">19:20:23</span>
+                                             </div>
+                                             <span class="foot">不太懂这个是什么意思呢</span>
+
+                                         </li>
+                                         <li>
+                                             <div class="mentor">
+                                                 <img src="assets/images/user.png" alt="">
+                                                 <span class="left">用户A</span>
+                                                 <span class="right">19:20:23</span>
+                                             </div>
+                                             <span class="foot">不太懂这个是什么意思呢</span>
+
+                                         </li>
+                                         <li>
+                                             <div class="mentor">
+                                                 <img src="assets/images/user.png" alt="">
+                                                 <span class="left">用户A</span>
+                                                 <span class="right">19:20:23</span>
+                                             </div>
+                                             <span class="foot">不太懂这个是什么意思呢</span>
+
+                                         </li>
+                                         <li>
+                                             <div class="mentor">
+                                                 <img src="assets/images/user.png" alt="">
+                                                 <span class="left">用户A</span>
+                                                 <span class="right">19:20:23</span>
+                                             </div>
+                                             <span class="foot">不太懂这个是什么意思呢</span>
+
+                                         </li>
+                                         <li>
+                                             <div class="mentor">
+                                                 <img src="assets/images/user.png" alt="">
+                                                 <span class="left">用户A</span>
+                                                 <span class="right">19:20:23</span>
+                                             </div>
+                                             <span class="mentor_foot">不太懂这个是什么意思呢</span>
+
+                                         </li>
+                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="dialog-background" id="addCameraAttr">-->
+    <!--<div class="dialog-container">-->
+        <!--<div class="modal-header">-->
+            <!--<h4 class="modal-title">提问</h4>-->
+        <!--</div>-->
+        <!--<div class="modal-body">-->
+           <!--<span>问题描述</span>-->
+            <!--<textarea style="width: 360px;resize: none;height: 123px;padding-left: 6px;font-size: 14px;" id="attr_comment_edit1"></textarea>-->
+        <!--</div>-->
+        <!--<div class="modal-footer">-->
+            <!--<button type="button" class="btn btn-default" onclick="closeAdd()">关闭</button>-->
+            <!--<button type="button" class="btn btn-primary" onclick="save()">保存</button>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+</body>
+</html>

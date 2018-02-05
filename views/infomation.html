@@ -1,0 +1,388 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>信息资料</title>
+    <link rel="stylesheet" href="assets/css/reset.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fontSize/iconfont.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/person.css">
+    <link rel="stylesheet" href="assets/css/personFilter.css">
+    <link rel="stylesheet" href="assets/js/alert/window.css">
+    <link rel="stylesheet" href="assets/css/infomation.css">
+    <script type="text/javascript" src="assets/js/alert/window.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/localStorageUtils.js"></script>
+    <script type="text/javascript" src="assets/js/tools.js"></script>
+</head>
+<body>
+<!--顶部logo-->
+<div class="header">
+    <img src="assets/images/header.png" alt="">
+</div>
+<!--内容部分-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" style=" padding:0;">
+            <div class="introduce">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="foot">首页</li>
+                    <li><a href="person.html" style="color:#fff">人员管理</a></li>
+                    <li><a href="score.html" style="color:#fff">成绩管理</a></li>
+                    <li><a href="infomation.html" style="color:#fff" class="pitch">信息资料</a></li>
+                    <li><a href="course.html" style="color:#fff">远程教学</a></li>
+                    <li><a href="testScore.html" style="color:#fff">远程考核</a></li>
+                    <li><a href="systemManage.html" style="color:#fff">系统管理</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" style=" padding:0;">
+            <div class="box1" style="display: none;" id="box">
+                <div class="tianjia">
+                    <p>信息编辑</p>
+                    <div class="tianjia_div">
+                        <li id="lx">
+                            <span>类型：</span>
+                            <input value="0" checked type="radio" name="leixingraido">&nbsp<span style="margin-right: 15px;width: auto;">计划</span>
+                            <input value="1" type="radio" name="leixingraido">&nbsp<span style="margin-right: 15px;width: auto;">指示</span>
+                            <input value="2" type="radio" name="leixingraido">&nbsp<span style="margin-right: 15px;width: auto;">训练资料</span>
+                        </li>
+                        <li id="bt">
+                            <span>标题：</span>
+                            <input id="biaoti" type="text">
+
+                        </li>
+                        <li id="nr">
+                            <span>内容：</span>
+                            <form style="display: inline-block;" id="uploadForm">
+                                <input type="file" name="file" id="file" />
+                                <input type="hidden" name="user" value="" id="user" />
+                                <input type="hidden" name="token" value="" id="token" />
+                            </form>
+                            <!--<form style="display: inline-block;" id="uploadForm" enctype="multipart/form-data" method="post">-->
+                                <!--<input id="file" type="file" name="file">-->
+                            <!--</form>-->
+                            <button onclick="upload()" style="width: 60px;border: 1px solid #cdcdcd;background: none;border-radius: 5px;height: 26px;">上传</button>
+                        </li>
+                        <li id="unit_firstes">
+                            <span>一级单位：</span>
+                            <select onchange="selectchange()"  id="unit_first">
+                                <option value=''>- - - - 请选择- - - - </option>
+                            </select>
+                        </li>
+                        <li id="unit_secondes">
+                            <span>二级单位：</span>
+                            <select  id="unit_second">
+                                <option value=''>-请选择一级单位-</option>
+                            </select>
+                        </li>
+                        <li id="people">
+                            <span>创建人：</span>
+                            <input type="text" id="cjr">
+                        </li>
+                        <li id="date">
+                            <span>创建日期：</span>
+                            <input id="cjrq" type="text">
+                        </li>
+                        <li id="pushs">
+                            <span>是否推送：</span>
+                            <input value="0" checked type="radio" name="leixingraido">&nbsp<span style="margin-right: 15px;width: auto;">推送</span>
+                            <input value="1" type="radio" name="leixingraido">&nbsp<span style="margin-right: 15px;width: auto;">不推送</span>
+                        </li>
+                        <li id="but" style="text-align: center;">
+                            <button onclick="closes()" style="width: 70px;height: 30px;border: 1px solid #cdcdcd;background: none;border-radius: 5%;" id="closese">取消</button>
+                            <button style="width: 70px;height: 30px;border: 1px solid #cdcdcd;background: none;border-radius: 5%;background: #2B90E2;margin-left: 40px" id="queding">保存</button>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <div class="box" style="display: none;" id="boxs">
+                <div class="tianjia">
+                    <p>信息新增</p>
+                    <div class="tianjia_div1">
+                        <li id="lxs">
+                            <span>类型：</span>
+                            <input value="0" checked type="radio" name="leixingraido">&nbsp<span style="margin-right: 15px;width: auto;">计划</span>
+                            <input value="1" type="radio" name="leixingraido">&nbsp<span style="margin-right: 15px;width: auto;">指示</span>
+                            <input value="2" type="radio" name="leixingraido">&nbsp<span style="margin-right: 15px;width: auto;">训练资料</span>
+                        </li>
+                        <li id="bts">
+                            <span>标题：</span>
+                            <input id="biaotis" type="text">
+
+                        </li>
+                        <li id="nrs">
+                            <span>内容：</span>
+                            <form style="display: inline-block;" id="uploadForms">
+                                <input id="files" type="file">
+                            </form>
+
+                            <button onclick="upload()" style="width: 60px;border: 1px solid #cdcdcd;background: none;border-radius: 5px;height: 26px;">上传</button>
+                        </li>
+                        <li id="unit_firstss">
+                            <span>一级单位：</span>
+                            <select onchange="selectchanges()"  id="unit_firsts">
+                                <option value=''>- - - - 请选择- - - - </option>
+                            </select>
+                        </li>
+                        <li id="unit_secondss">
+                            <span>二级单位：</span>
+                            <select  id="unit_seconds">
+                                <option value=''>-请选择一级单位-</option>
+                            </select>
+                        </li>
+                        <li id="peoples">
+                            <span>创建人：</span>
+                            <input type="text" id="cjrs">
+                        </li>
+                        <li id="dates">
+                            <span>创建日期：</span>
+                            <input id="cjrqs" type="date">
+                        </li>
+                        <li id="push">
+                            <span>是否推送：</span>
+                            <input value="0" checked type="radio" name="leixingraido">&nbsp<span style="margin-right: 15px;width: auto;">推送</span>
+                            <input value="1" type="radio" name="leixingraido">&nbsp<span style="margin-right: 15px;width: auto;">不推送</span>
+                        </li>
+                        <li id="buts" style="text-align: center;">
+                            <button onclick="close1()" style="width: 70px;height: 30px;border: 1px solid #cdcdcd;background: none;border-radius: 5%;" id="closes">取消</button>
+                            <button onclick="upload()" style="width: 70px;height: 30px;border: 1px solid #cdcdcd;background: none;border-radius: 5%;background: #2B90E2;margin-left: 40px" id="quedings">保存</button>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="detail_header">
+                    <div class="header_list">
+                        <div class="detail_left">
+                            <span>所属单位 </span>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="top">
+                                    <span>一级单位</span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" id="stair">
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="secondary">
+                                    <span>二级单位</span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" id="second">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="detail_right">
+                            <div class="login_left">
+                                <span class="iconfont icon-bangzhu"></span>
+                                <span>帮助中心</span>
+                            </div>
+                            <div class="login_right">
+                                <span class="iconfont icon-tuichu"></span>
+                                <span onclick="logout()">退出登录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail_footer">
+                    <div class="footer_content">
+                        <div class="query clear">
+                            <div class="query_left">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default">
+                                        筛选查询 <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="design">
+                            <ul class="nav nav-tabs" style="display:block">
+                                <li role="presentation" class="active"><a href="#">信息分发</a></li>
+                                <li role="presentation"><a href="#">信息接收</a></li>
+                            </ul>
+                            <div class="but">
+                                <span onclick="attr()" style="cursor: pointer;" class="label label-primary">添加</span>
+                                <span onclick="delAll()" style="cursor: pointer;" class="label label-primary">批量删除</span>
+                            </div>
+                            <div class="but normal">
+                                <span  style="cursor: pointer;" class="label label-primary">接收</span>
+                                <span  style="cursor: pointer;" class="label label-primary">批量删除</span>
+                            </div>
+                        </div>
+                        <div class="personList perRecord">
+                            <div style="overflow-x: auto;">
+                                <table class="table table-bordered" id="infomation">
+                                   
+
+                                </table>
+                                <div style="float:right;padding:100px 30px" >
+                                    <p>
+                                        <button onclick="first()" class="btn btn-primary btn-sm" id="sys">第一页</button>
+                                        <button onclick="prevpage()" class="btn btn-primary btn-sm" id="syys">上一页</button>
+                                        <button onclick="nextpage()" class="btn btn-primary btn-sm" id="xyys">下一页</button>
+                                        <button onclick="last()" class="btn btn-primary btn-sm" id="mys">最后一页</button>
+                                        共<span id="tiaoshu"></span>
+                                        </select>条,
+                                        第<span id="pageNum"></span>页
+                                        <input style="width: 50px;" id="tys" value="" />
+                                        <button onclick="selectByPage()" id="tzs" class="btn btn-primary btn-sm">确定</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personList">
+                            <div style="overflow-x: auto;">
+                                <table class="table table-bordered " id="info">
+
+
+                                </table>
+                                <div style="float:right;padding:100px 30px" id="div2">
+                                    <p>
+                                        <button onclick="first()" class="btn btn-primary btn-sm" id="sy">第一页</button>
+                                        <button onclick="prevpage()" class="btn btn-primary btn-sm" id="syy">上一页</button>
+                                        <button onclick="nextpage()" class="btn btn-primary btn-sm" id="xyy">下一页</button>
+                                        <button onclick="last()" class="btn btn-primary btn-sm" id="my">最后一页</button>
+                                        共<span id="tiaoshus"></span>
+                                        </select>条,
+                                        第<span id="pageNums"></span>页
+                                        <input style="width: 50px;" id="tyes" value="" />
+                                        <button onclick="selectByPage()" id="tz" class="btn btn-primary btn-sm">确定</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="assets/js/public.js"></script>
+<script type="text/javascript" src="assets/js/information.js"></script>
+<script type="text/javascript" src="assets/js/infomation.js"></script>
+<script>
+    function attr(){
+        $('.box').css('display','block');
+    }
+    function close1() {
+        $('.box').css('display','none');
+        $("#biaoti").val('');
+        $("#biaoti").val('');
+        $("#file").val('');
+        $("#cjr").val('');
+        $("#cjrq").val('');
+        $("#unit_firsts option").eq(0).prop("selected",true);
+        $("#unit_seconds option").eq(0).prop("selected",true);
+    }
+
+    //全选功能
+    function allcheck(){
+        if($('#allcheck').is(':checked') == true){
+            $('#infomation input[type=checkbox]').prop('checked',true);
+        }else if($('#allcheck').is(':checked') == false){
+            $('#infomation input[type=checkbox]').prop('checked',false);
+        }
+    }
+    //批量删除
+    function delAll() {
+        var dataArr = [];
+        for(var i = 0;i<$('#infomation input[type=checkbox]').length;i++){
+            if($('#infomation input[type=checkbox]').eq(i).is(':checked') == true){
+                dataArr.push($('#infomation input[type=checkbox]').eq(i).val());
+            }
+        }
+        if(dataArr.length==0){
+            win.alert('提示', '请勾选要删除的计划或指示')
+        }
+        win.confirm("提示","确认删除无法恢复?",function(r){
+            if(r==true){
+                $.ajax({
+                    url: '/delete_plan',
+                    type: 'POST',
+                    data: {
+                        user: readData("USER_KEY").name,
+                        token: readData("USER_KEY").token,
+                        id:JSON.stringify(dataArr)
+                    },
+                    success: function(data) {
+                        if(data.code ==0){
+                            win.alert("提示",data.msg);
+                            hquser();
+                        }else{
+                            win.alert("提示",data.msg);
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            }else{
+                return false;
+            }
+        })
+
+    }
+
+//    /*新增里的上传*
+//     /
+//     */
+//    function upload() {
+//        $('#users').val(readData('USER_KEY').name);
+//        $('#tokens').val(readData('USER_KEY').token);
+////        var formData = new FormData($("#uploadForms")[0]);
+//        var formData = new FormData();
+//        formData.append($("#file").get(0).files[0]);
+//        $.ajax({
+//            url: "/uploadSingle",
+//            type: 'POST',
+//            data: formData,
+//            async: false,
+//            cache: false,
+//            contentType: false,
+//            processData: false,
+//            success: function(data) {
+//                console.log(data);
+//                return;
+//                console.log(JSON.stringify(data));
+//                Url = JSON.stringify(data)
+//            },
+//            error: function(data) {
+//                console.log(data);
+//            }
+//        });
+//    }
+//
+//    /*编辑里的上传*
+//    /
+//     */
+//    function uploads() {
+//        $('#user').val(readData('USER_KEY').name);
+//        $('#token').val(readData('USER_KEY').token);
+////        var formData = new FormData($("#uploadFormes")[0]);
+//        var formData = new FormData();
+//        var file = $("#file").get(0).files[0];
+//        formData.append("file",file)
+//        console.log(formData);
+//        $.ajax({
+//            url: '/uploadSingle',
+//            type: 'POST',
+//            data: formData,
+//            async: false,
+//            cache: false,
+//            contentType: false,
+//            processData: false,
+//            success: function(data) {
+//                console.log(JSON.stringify(data));
+//                Url = JSON.stringify(data)
+//            },
+//            error: function(data) {
+//                console.log(data);
+//            }
+//        });
+//    }
+
+</script>
+</html>

@@ -1,0 +1,42 @@
+{
+  "name": "hk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "www",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.13.3",
+    "bootstrap": "^3.3.7",
+    "connect-redis": "^3.0.1",
+    "cookie-parser": "^1.3.5",
+    "ejs": "^2.5.6",
+    "ejsexcel": "^3.4.9",
+    "excel-export": "^0.5.1",
+    "express": "^4.15.3",
+    "express-session": "^1.15.2",
+    "ffi": "^2.2.0",
+    "file": "^0.2.2",
+    "formidable": "^1.1.1",
+    "jquery": "^1.11.3",
+    "log4js": "^1.1.1",
+    "mysql": "^2.13.0",
+    "node-gyp": "^3.6.2",
+    "node-schedule": "^1.2.3",
+    "node-uuid": "^1.4.8",
+    "node-xlsx": "^0.11.2",
+    "os": "^0.1.1",
+    "socket.io": "^2.0.3",
+    "socket.io-adapter": "^1.1.0",
+    "socket.io-client": "^2.0.3",
+    "socket.io-parser": "^3.1.2",
+    "util": "^0.10.3",
+    "ws": "^2.3.1",
+    "xlsx": "^0.11.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node ./bin/www"
+  },
+  "author": "hk",
+  "license": "ISC"
+}

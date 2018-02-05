@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>远程教学</title>
+    <link rel="stylesheet" href="assets/css/reset.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fontSize/iconfont.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/person.css">
+    <link rel="stylesheet" href="assets/css/course.css">
+    <link rel="stylesheet" href="assets/js/alert/window.css">
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/localStorageUtils.js"></script>
+    <script type="text/javascript" src="assets/js/alert/window.js"></script>
+
+</head>
+<body>
+<!--顶部logo-->
+<div class="header">
+    <img src="assets/images/header.png" alt="">
+</div>
+<!--内容部分-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-2" style=" padding:0;">
+            <div class="introduce">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="foot">首页</li>
+                    <li><a href="person.html" style="color:#fff">人员管理</a></li>
+                    <li><a href="score.html" style="color:#fff">成绩管理</a></li>
+                    <li><a href="infomation.html" style="color:#fff">信息资料</a></li>
+                    <li><a href="course.html" style="color:#fff" class="pitch">远程教学</a></li>
+                    <li><a href="testScore.html" style="color:#fff">远程考核</a></li>
+                    <li><a href="systemManage.html" style="color:#fff">系统管理</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" style=" padding:0;">
+            <div class="detail">
+                <div class="detail_header">
+                    <div class="header_list">
+                        <div class="detail_left">
+                            <span>所属单位 </span>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="top">
+                                    <span>一级单位</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" id="stair">
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="secondary">
+                                    <span>二级单位</span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" id="second">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="detail_right">
+                            <div class="login_left">
+                                <span class="iconfont icon-bangzhu"></span>
+                                <span>帮助中心</span>
+                            </div>
+                            <div class="login_right">
+                                <span class="iconfont icon-tuichu"></span>
+                                <span onclick="logout()">退出登录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail_footer">
+                    <div class="footer_content">
+                        <div class="query clear">
+                            <div class="query_left">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default">
+                                        筛选查询 <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="design">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation" class="active"><a href="#">课程</a></li>
+                                <li role="presentation"><a href="#">会议</a></li>
+                            </ul>
+                            <div class="but">
+                                <span class="label label-primary">添加</span>
+                                <span class="label label-primary">删除</span>
+                            </div>
+                        </div>
+                        <div class="course" style="width:100%;height:500px;padding:10px">
+                            <ul style="width:100%;height:100%;" class="clear">
+                                <li class="willDefault">
+                                    <h5>课程一</h5>
+                                    <div class="case">
+                                        <span class="left">命令条例</span>
+                                        <span class="right">02月02日 19：40</span>
+                                    </div>
+                                    <div class="popups">
+                                        <span style="opacity:1">
+                                            即将开始
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h5>课程一</h5>
+                                    <div class="case">
+                                        <span class="left">命令条例</span>
+                                        <span class="right">02月02日 19：40</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h5>课程一</h5>
+                                    <div class="case">
+                                        <span class="left">命令条例</span>
+                                        <span class="right">02月02日 19：40</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="assets/js/public.js"></script>
+</body>
+</html>

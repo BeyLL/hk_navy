@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="assets/css/reset.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fontSize/iconfont.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/js/alert/window.css">
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/localStorageUtils.js"></script>
+    <script type="text/javascript" src="assets/js/alert/window.js"></script>
+</head>
+<body>
+<div class="header">
+    <img src="assets/images/header.png" alt="">
+</div>
+
+<div class="info">
+    <div class="info_left">
+        <span class="iconfont icon-bangzhu"></span>
+        <span>帮助中心</span>
+    </div>
+    <div class="info_right">
+        <span class="iconfont icon-tuichu"></span>
+        <span onclick="logout()">退出登录</span>
+    </div>
+</div>
+
+<div class="content">
+    <div class="box">
+        <ul class="choice">
+            <li><a href="person.html">人员管理</a></li>
+            <li><a href="score.html">成绩管理</a></li>
+            <li><a href="infomation.html">信息资料</a></li>
+            <li class="default"><a href="course.html">远程教学</a></li>
+            <li><a href="testInfo.html">远程考核</a></li>
+            <li><a href="systemManage.html">系统管理</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="assets/js/public.js"></script>
+<script>
+    var obj = readData("USER_KEY");
+    var username = obj.name;
+    var token = obj.token;
+    console.log(username, token);
+    $("#peopleManage").click(function () {
+        window.location.href = 'person.html';
+    })
+    $("#acheveManage").click(function () {
+        window.location.href = 'score.html';
+    })
+    $("#infoManage").click(function () {
+        window.location.href = 'infomation.html';
+    })
+    $("#system").click(function () {
+        window.location.href = 'systemManage.html';
+    })
+
+
+    //根据权限显示可以打开的窗口
+
+    var $as = $(".content .box li a");
+    var ary = [];
+    for(var i=0;i<$as.length;i++){
+        ary.push($as.eq(i).html());
+    }
+    console.log(ary);
+
+    getrole();
+    function getrole() {
+        var data = {};
+        data.user = readData("USER_KEY").name;
+        data.token = readData("USER_KEY").token;
+        data = JSON.stringify(data);
+        $.ajax({
+            url: "/checkUserPermissionByName",
+            type: "post",
+            dataType: "json",
+            headers: {'Content-Type': 'application/json'},
+            data: data,
+            timeOut: 10000,
+            success: function (data) {
+                if (data.code == 0) {
+                    var result = data.data;
+                    var array = [];
+                    for(var i=0;i<result.length;i++){
+                        array.push(result[i].action_name);
+                    }
+                    console.log(array);
+                    for(var j=0;j<ary.length;j++){
+                        if(array.indexOf(ary[j])==-1){
+                            $as.eq(j).css({"color":"#888","font-size":"18px"}).attr("href","#").parent().css({"background":"#eeeef0","opacity":'.8'})
+                        }
+                    }
+                } else {
+                    alert(data.msg);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+        })
+    }
+
+
+</script>
+
+</html>

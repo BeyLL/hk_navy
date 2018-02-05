@@ -1,0 +1,416 @@
+body {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px transparent;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px transparent;
+    background-color: #1458a7;
+}
+
+/*滑块效果*/
+::-webkit-scrollbar-thumb:hover {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px transparent;
+    background: #1458a7;
+}
+
+/*IE滚动条颜色*/
+html {
+    scrollbar-face-color: #1458a7; /*滚动条颜色*/
+    scrollbar-highlight-color: transparent;
+    scrollbar-3dlight-color: transparent;
+    scrollbar-darkshadow-color: transparent;
+    scrollbar-Shadow-color: transparent; /*滑块边色*/
+    scrollbar-arrow-color: transparent; /*箭头颜色*/
+    scrollbar-track-color: transparent; /*背景颜色*/
+}
+
+.container {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container .row {
+    height: 100%;
+}
+
+.container .row .col-md-2 {
+    height: 100%;
+}
+
+.container .row .col-md-10 {
+    height: 100%;
+}
+
+.container .introduce {
+    width: 100%;
+    height: 100%;
+    background: #16578d
+}
+
+.container .introduce ul {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+
+.container .introduce li {
+    padding: 5px 10px 5px 30px;
+}
+
+.container .introduce .foot {
+    width: 100%;
+    height: 42px;
+    background: #1c5e9b;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.container .introduce li:not(0):hover {
+    background: #fff;
+}
+
+.container .introduce .left, .right {
+    display: inline-block;
+}
+
+.container .introduce .left img, span {
+    display: inline-block;
+}
+
+.container .introduce .left span {
+    margin-left: 20px;
+}
+
+.container .introduce .right {
+    float: right;
+    font-weight: normal;
+}
+
+.container .detail {
+    width: 100%;
+    height: 100%;
+    background: #f3f3f5;
+}
+
+.container .detail_header {
+    height: 42px;
+    line-height: 42px;
+    border-bottom: 1px solid #eeeef0;
+    background: #fff;
+}
+
+.container .header_list {
+    height: 100%;
+    margin: 0 30px 0 20px;
+}
+
+.container .header_list .detail_left {
+    float: left;
+    height: 100%;
+}
+
+.container .header_list .detail_left .btn-group {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.container .detail_left .choice {
+    margin-bottom: 0;
+    height: 41px;
+}
+
+.container .detail_left .choice li {
+    display: inline-block;
+    margin-right: 20px;
+    height: 41px;
+    line-height: 41px;
+    text-align: center;
+}
+
+.container .default {
+    color: #1c5e9b;
+    border-bottom: 1px solid #1c5e9b;
+}
+
+.container .header_list .detail_right {
+    float: right;
+}
+
+.container .header_list .login_left, .login_right {
+    display: inline-block;
+}
+
+.container .detail_right .login_right {
+    margin-left: 20px;
+}
+
+.container .detail .detail_footer {
+    width: 100%;
+    height: 100%;
+}
+
+.container .detail .detail_footer .footer_content {
+    /*position: relative;*/
+    margin: 10px 25px 30px 10px;
+    height: 83%;
+    background: #fff;
+}
+
+.container .detail .detail_footer .query {
+    padding: 0 10px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.container .detail .detail_footer .query .query_left, .query_right {
+    display: inline-block;
+}
+
+.container .detail .detail_footer .query .query_right .input-group {
+    width: 300px;
+}
+
+.query .query_left {
+    float: left;
+}
+
+.query .right_hide{
+    display:none;
+}
+
+.query .query_right {
+    float: right;
+}
+
+.footer_content .design {
+    position: relative;
+    padding: 0 10px;
+    height: 42px;
+    line-height: 42px;
+}
+
+.footer_content .design .nav {
+    /*float:left;*/
+}
+
+.footer_content .design .but {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    /*float:right;*/
+}
+
+.footer_content .design .normal {
+    display: none
+}
+
+.footer_content .design .but span {
+    display: inline-block;
+    width: 75px;
+    height: 25px;
+    line-height: 24px;
+}
+
+.personList {
+    padding: 10px 10px;
+    display: none
+}
+
+.perRecord {
+    display: block;
+}
+
+.sameList {
+    margin: 0 278px;
+}
+
+.perMiss {
+    display: block
+}
+
+.personList .table tr th, tr td {
+    text-align: center;
+    font-weight: normal;
+}
+
+.footer_content .bom nav {
+    display: inline-block;
+}
+
+.footer_content .bom nav .pagination {
+    margin: 0;
+}
+
+.footer_content .bom {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.footer_content .bom div {
+    display: inline-block;
+}
+
+/*.dis {*/
+/*display: none;*/
+/*}*/
+
+.show_search {
+    padding: 10px;
+    width: 100%;
+    height: 215px;
+    display: none;
+}
+
+.show_search #search {
+    padding: 0 10px;
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid #c8c8cc;
+}
+
+#search li {
+    position: relative;
+    border-bottom: 1px dashed #c8c8cc;
+}
+
+.show_search #search li div {
+    display: inline-block;
+}
+
+.show_search #search li .search_left {
+    position: absolute;
+    left: 11px;
+    top: 9px;
+    text-align: left;
+}
+
+.show_search  li .search_right {
+    padding: 0 100px 0 112px;
+    overflow: hidden;
+    height: 36px;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+#search li .search_end{
+    position:absolute;
+    right:20px;
+    top:8px;
+    cursor: pointer;
+}
+
+.show_search #search li .search_right span {
+    margin-left: 27px;
+    text-align:center;
+}
+
+/*.show_search #search li span {*/
+    /*display: inline-block;*/
+/*}*/
+
+.pitch {
+    background: #eee;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    /*background-color: #2b2b2b;*/
+}
+
+.box {
+    z-index: 9;
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.tianjia {
+    width: 350px;
+    height: 426px;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -175px;
+    margin-top: -213px;
+    overflow: hidden;
+
+}
+
+.tianjia li {
+    list-style: none;
+    height: 30px;
+    line-height: 30px;
+}
+
+.tianjia select {
+    height: 26px;
+    width: 178px;
+}
+
+.tianjia_div {
+    padding: 0 30px 30px 30px;
+    height: 400px;
+    overflow-x: auto;
+}
+
+.tianjia_div span {
+    display: inline-block;
+    width: 98px;
+}
+
+.tianjia_div input[type=text] {
+    width: 178px;
+    border-radius: 5px;
+    border: 1px solid #cdcdcd;
+    height: 26px;
+}
+
+.tianjia_div input[type=date] {
+    width: 178px;
+    border-radius: 5px;
+    border: 1px solid #cdcdcd;
+    height: 26px;
+}
+
+.tianjia p {
+    color: #fff;
+    font-size: 18px;
+    background: #2C6DBD;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+
+.score_hide {
+    display: none
+}
